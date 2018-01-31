@@ -18,8 +18,8 @@ namespace SalehVMPartialView.Controllers
         }
         // GET: Home
         //[HttpGet]
-        //we need by this way to pass the hall object not id  
-        //public ActionResult PrtialIndex(Person personForPartial)
+        ////we need by this way to pass the hall object not id
+        //public ActionResult PartialIndex(Person personForPartial)
         //{
         //    //we have to sent name of patial view as View to draw this interface and the object to get info-
         //    return PartialView("_PartialPerson", personForPartial);
@@ -42,11 +42,11 @@ namespace SalehVMPartialView.Controllers
             {
                 if (City == "city")
                 {
-                    return View(MyList.myList.Where(x => x.City.ToLower().Contains(searchTxt.ToLower())).OrderBy(x => x.Name));
+                    return View(MyList.myList.Where(x => x.City.ToLower().Contains(searchTxt.ToLower())));
                 }
                 else if (City != "city")
                 {
-                    return View(MyList.myList.Where(x => x.Name.ToLower().Contains(searchTxt.ToLower())).OrderBy(x => x.City));
+                    return View(MyList.myList.Where(x => x.Name.ToLower().Contains(searchTxt.ToLower())));
                 }
             }
             else
