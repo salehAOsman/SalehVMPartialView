@@ -39,11 +39,10 @@
         </th>
         <th></th>
     </tr>
-
 @foreach (var item in Model)
 {
     //Html.RenderAction("PrtialIndex", item);<!--this code related with sending just object to partial view, not id-->
-    Html.RenderAction("PrtialIndex", new { id = item.Id });<!--this collection related with sending just id instead of all object-->
+    Html.RenderAction("PartialIndex", new { id = item.Id });<!--this collection related with sending just id instead of all object-->
 }
 
 </table>

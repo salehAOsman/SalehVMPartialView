@@ -28,16 +28,16 @@ namespace SalehVMPartialView.Controllers
         //but in this way we fitch just id from "View" "Index" to return object to partial view "_PartialPerson" 
 
         [HttpGet]
-        public ActionResult PrtialIndex(int id)
+        public ActionResult PartialIndex(int id)
         {
-            Person person = MyList.myList.SingleOrDefault(p => p.Id == id);
+            Person person = MyList.myList.SingleOrDefault(x => x.Id == id);
+
             return PartialView("_PartialPerson", person);
         }
 
         [HttpPost]
         public ActionResult Index(string searchTxt = "", string City = "")
         {
-
             if (!string.IsNullOrEmpty(searchTxt))
             {
                 if (City == "city")
