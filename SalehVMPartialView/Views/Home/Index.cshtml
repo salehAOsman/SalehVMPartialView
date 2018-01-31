@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SalehVMPartialView.Models.Person>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <!--start div for begin form-->
+        @Html.ValidationSummary(true, " ", new { @class = "text-danger" })<!--This used for validation but we need for each element-->
+        <div class="form-group">
+            <!-- property -->
+            <div class="col-md-3 ">
+                <!--it must be name of input same input in method post "name="searchTxt" "-->
+                <input type="text" name="searchTxt" value="" placeholder="input seraching" />        @*It relates this single validation with validationSummary*@
+            </div>
+            <div class="col-md-4">
+                <!-- It needs "name="****" " of input element to compare this value in the method
+                    we use property to be by default checked -->
+                <a>by City</a><input type="checkbox" name="City" value="city" class="btn btn-default" checked />
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    //Html.RenderAction("PrtialIndex", item);<!--this code related with sending just object to partial view, not id-->
+    Html.RenderAction("PrtialIndex", new { id = item.Id });<!--this collection related with sending just id instead of all object-->
+}
+
+</table>
