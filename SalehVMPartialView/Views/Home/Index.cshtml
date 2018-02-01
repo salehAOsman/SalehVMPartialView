@@ -43,9 +43,11 @@
 {
     foreach (var item in Model)
     {
-        @*@: <tr><td><a href="@Url.Action()">content</a></td></tr>*@
+        @* @: <tr><td><a href="@Url.Action()">content</a></td></tr>*@
         //Html.RenderAction("PrtialIndex", item);<!--this code related with sending just object to partial view, not id-->
+        //we have for sort of partial tow of then need c# or js as :{ } the other just need html place
         Html.RenderAction("PrtialIndex", "Home", new { id = item.Id });<!--this collection related with sending just id instead of all object-->
     }
 }
+
 </table>

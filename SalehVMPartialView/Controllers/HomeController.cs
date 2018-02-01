@@ -96,7 +96,7 @@ namespace SalehVMPartialView.Controllers
             //we have up editPerson as input then we need to get old one to assign changes to him by this collection down 
             Person oldPerson = MyList.myList.SingleOrDefault(x => x.Id == editPerson.Id);//we get the old object 
             //now we will assing new info to the old one by this down
-            oldPerson.Name = editPerson.Name;
+            oldPerson.Name = editPerson.Name;//assign to old this new 
             oldPerson.City = editPerson.Name;
 
             return RedirectToAction("Index");// it is important return RedirectToAction("Index")
@@ -144,6 +144,5 @@ namespace SalehVMPartialView.Controllers
             }
             return View();
         }
-
     }
 }
