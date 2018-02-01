@@ -19,7 +19,7 @@
             <div class="col-md-4">
                 <!-- It needs "name="****" " of input element to compare this value in the method
                     we use property to be by default checked -->
-                <a>by City</a><input type="checkbox" name="City" value="city" class="btn btn-default" checked />
+                <a>by City</a><input type="checkbox" name="City" value="city" class="btn btn-default" checked /><!--default checked "checkBox" -->
                 <input type="submit" value="Search" class="btn btn-default" />
             </div>
         </div>
@@ -30,7 +30,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
+    <tr><th></th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -39,11 +39,13 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model)
+@if (Model != null)
 {
-    //Html.RenderAction("PrtialIndex", item);<!--this code related with sending just object to partial view, not id-->
-    Html.RenderAction("PrtialIndex", new { id = item.Id });<!--this collection related with sending just id instead of all object-->
+    foreach (var item in Model)
+    {
+        @*@: <tr><td><a href="@Url.Action()">content</a></td></tr>*@
+        //Html.RenderAction("PrtialIndex", item);<!--this code related with sending just object to partial view, not id-->
+        Html.RenderAction("PrtialIndex", "Home", new { id = item.Id });<!--this collection related with sending just id instead of all object-->
+    }
 }
-
 </table>

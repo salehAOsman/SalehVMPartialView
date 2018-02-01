@@ -27,7 +27,7 @@ namespace SalehVMPartialView.Controllers
 
         //but in this way we fitch just id from "View" "Index" to return object to partial view "_PartialPerson" 
 
-        [HttpGet]
+        //[HttpGet] //we use this method by get index and post index then we do not neeed to restrict this method as get /post 
         public ActionResult PrtialIndex(int id)
         {
             Person person = MyList.myList.SingleOrDefault(p => p.Id == id);
@@ -37,7 +37,6 @@ namespace SalehVMPartialView.Controllers
         [HttpPost]
         public ActionResult Index(string searchTxt = "", string City = "")
         {
-
             if (!string.IsNullOrEmpty(searchTxt))
             {
                 if (City == "city")
@@ -93,7 +92,13 @@ namespace SalehVMPartialView.Controllers
         [HttpPost]
         public ActionResult Edit(Person editPerson)
         {
-            MyList.myList.Add(editPerson);//save in static list
+            //MyList.myList.Add(editPerson);//save in static list 
+            //we have up editPerson as input then we need to get old one to assign changes to him by this collection down 
+            Person oldPerson = MyList.myList.SingleOrDefault(x => x.Id == editPerson.Id);//we get the old object 
+            //now we will assing new info to the old one by this down
+            oldPerson.Name = editPerson.Name;
+            oldPerson.City = editPerson.Name;
+
             return RedirectToAction("Index");// it is important return RedirectToAction("Index")
         }
 
@@ -136,10 +141,7 @@ namespace SalehVMPartialView.Controllers
             if (City == "city")
             {
                 //SrcPerson = MyList.myList.Where( x => x.Id == src );
-
             }
-
-
             return View();
         }
 
